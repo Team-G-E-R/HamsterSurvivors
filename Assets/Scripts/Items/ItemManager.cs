@@ -15,7 +15,6 @@ public class ItemManager : MonoBehaviour
     [SerializeField] private GameObject weaponContainerUi;
     [SerializeField] private GameObject passiveItemContainerUi;
     [SerializeField] private GameObject weaponContainerOb;
-    public UnLockedItems unlockedItems;
 
     private void Awake()
     {

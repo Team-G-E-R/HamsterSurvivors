@@ -20,6 +20,7 @@ public abstract class Weapon : Item
     protected float lastShotTime;
 
     protected Transform enemyPos;
+    protected Transform playerPos;
 
     private bool canShoot;
     private bool canPirce;
@@ -29,6 +30,8 @@ public abstract class Weapon : Item
         currentDamage = baseDamage;
         currentProjectileSize = baseProjectileSize;
         currentCooldown = baseCooldown;
+
+        playerPos = FindObjectOfType<PlayerController>().transform;
 
         //ApplyCurrentModification();
     }

@@ -126,16 +126,16 @@ public class EnemyManager : MonoBehaviour
 
             switch (side)
             {
-                case 0: // Верхняя сторона
+                case 0: 
                     position = new Vector3(UnityEngine.Random.Range(camPosition.x - camWidth / 2, camPosition.x + camWidth / 2), camPosition.y + camHeight / 2 + SpawnRadius, 0);
                     break;
-                case 1: // Нижняя сторона
+                case 1: 
                     position = new Vector3(UnityEngine.Random.Range(camPosition.x - camWidth / 2, camPosition.x + camWidth / 2), camPosition.y - camHeight / 2 - SpawnRadius, 0);
                     break;
-                case 2: // Левая сторона
+                case 2: 
                     position = new Vector3(camPosition.x - camWidth / 2 - SpawnRadius, UnityEngine.Random.Range(camPosition.y - camHeight / 2, camPosition.y + camHeight / 2), 0);
                     break;
-                case 3: // Правая сторона
+                case 3: 
                     position = new Vector3(camPosition.x + camWidth / 2 + SpawnRadius, UnityEngine.Random.Range(camPosition.y - camHeight / 2, camPosition.y + camHeight / 2), 0);
                     break;
             }

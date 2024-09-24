@@ -16,6 +16,7 @@ public class PlayerExpiriense : MonoBehaviour
     private int _expToNewLvl = 10;
     private float _vacuumSpeed = 6f;
     private List<GameObject> LevelUpItems = new List<GameObject>();
+    private Transform playerPos;
 
     [SerializeField] private float epxTakingRange;
     [SerializeField] private LayerMask expLayer;
@@ -32,18 +33,20 @@ public class PlayerExpiriense : MonoBehaviour
     private void Start()
     {
         UpdateLevelUi();
+        playerPos = FindObjectOfType<PlayerController>().transform;
+
     }
 
     private void Update()
     {
-        Collider2D[] hitColliders = Physics2D.OverlapCircleAll(transform.position, epxTakingRange, expLayer);
+        Collider2D[] hitColliders = Physics2D.OverlapCircleAll(playerPos.position, epxTakingRange, expLayer);
 
         if (hitColliders.Length > 0)
         {
             foreach (Collider2D col in hitColliders)
             {
-                col.transform.position = Vector3.MoveTowards(col.transform.position, transform.position, _vacuumSpeed * Time.deltaTime);
-                if (Vector2.Distance(col.transform.position, transform.position) < 0.5f)
+                col.transform.position = Vector3.MoveTowards(col.transform.position, playerPos.position, _vacuumSpeed * Time.deltaTime);
+                if (Vector2.Distance(col.transform.position, playerPos.position) < 0.5f)
                 {
                     ConsumeExpChard(col.gameObject);
                 }

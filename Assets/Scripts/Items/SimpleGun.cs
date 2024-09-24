@@ -29,10 +29,10 @@ public class SimpleGun : Weapon
         {
             return;
         }
-        Vector3 shootDirection = enemyPos.position - transform.position;
+        Vector3 shootDirection = enemyPos.position - playerPos.position;
         shootDirection.z = 0;
 
-        GameObject projectile = Instantiate(projectilePrefab, transform.position, transform.rotation);
+        GameObject projectile = Instantiate(projectilePrefab, playerPos.position, playerPos.rotation);
         Rigidbody2D rb = projectile.GetComponent<Rigidbody2D>();
         rb.velocity = shootDirection.normalized * baseProjSpeed;
         projectile.GetComponent<Projectile>().damage = currentDamage;
