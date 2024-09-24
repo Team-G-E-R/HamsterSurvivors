@@ -24,13 +24,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6287436790125728801}
+  serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 1108.6196, y: 419.38858, z: 22.123854}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &352150871581855867
 MonoBehaviour:
@@ -46,6 +46,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ActiveItem: 0
   itemSptite: {fileID: 21300000, guid: 9c7b2916fa78e2e4b9adcb70bd0c58fe, type: 3}
-  itemName: MoveSpeedItem
+  itemName: "\u0421\u0430\u043F\u043E\u0433\u0438 \u0441\u043A\u043E\u0440\u043E\u0441\u0442\u0438"
+  itemDescription: "\u041F\u043E\u0432\u044B\u0448\u0430\u0435\u0442 \u0441\u043A\u043E\u0440\u043E\u0441\u0442\u044C
+    \u043F\u0435\u0440\u0435\u0434\u0432\u0438\u0436\u0435\u043D\u0438\u044F"
   uniqueId: 4
   _affectsActiveItems: 0
