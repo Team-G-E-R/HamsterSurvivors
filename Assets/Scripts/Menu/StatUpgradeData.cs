@@ -4,13 +4,13 @@ using UnityEngine;
 public class StatUpgradeData : ScriptableObject
 {
     [Header("Upgrade Information")]
-    public string statName;          // Название характеристики (например, "Health")
-    public string description;       // Описание улучшения
-    public Sprite icon;              // Иконка для отображения в UI
+    public string statName;
+    public string description;
+    public Sprite icon;
 
     [Header("Upgrade Levels")]
-    public int currentLevel;         // Текущий уровень улучшения
-    public int maxLevel;             // Максимальный уровень улучшения
-    public int baseUpgradeCost;          // Стоимость улучшения на каждом уровне
+    public int currentLevel;         
+    public int maxLevel;            
+    public int baseUpgradeCost;         
     public float upgradeCostMulti;
 }

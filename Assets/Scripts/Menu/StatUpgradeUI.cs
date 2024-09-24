@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using System.Collections.Generic;
 using TMPro;
+using System;
 
 public class StatUpgradeUI : MonoBehaviour
 {
@@ -14,7 +15,8 @@ public class StatUpgradeUI : MonoBehaviour
     public TMP_Text upgradeDescriptionText;
     public Image upgradeIconImage;
     public Button upgradeButton;
-    public GameObject UpgradeWindow;
+    public GameObject upgradeWindow;
+    public TMP_Text upgradeCostText;
 
 
 
@@ -30,7 +32,7 @@ public class StatUpgradeUI : MonoBehaviour
 
     private void GenerateUpgradeUI()
     {
-        foreach (StatUpgradeData upgradeData in upgradeManager.upgrades)
+        foreach (StatUpgradeData upgradeData in upgradeManager.statUpgrades)
         {
             GameObject item = Instantiate(upgradeItemPrefab, upgradeGrid);
             UpgradeItemUI itemUI = item.GetComponent<UpgradeItemUI>();
@@ -48,13 +50,32 @@ public class StatUpgradeUI : MonoBehaviour
 
     private void ShowUpgradeWindow(StatUpgradeData upgradeData)
     {
+        upgradeWindow.SetActive(true);
         // Обновление информации в универсальном окне
         upgradeNameText.text = upgradeData.statName;
         upgradeDescriptionText.text = upgradeData.description;
         upgradeIconImage.sprite = upgradeData.icon;
 
         // Активируем кнопку улучшения только если уровень ниже максимального
-        upgradeButton.interactable = upgradeData.currentLevel < upgradeData.maxLevel;
+
+        int upgradeCost = upgradeManager.TryGetUpgradeCost(upgradeManager.GetUpgradeIndex(upgradeData));
+        bool reachMaxLevel = upgradeData.currentLevel >= upgradeData.maxLevel;
+        //upgradeCostText.text = upgradeCost.ToString();
+        if (!reachMaxLevel && upgradeCost <= upgradeManager.currentGold)
+        {
+            upgradeButton.interactable = true;
+            upgradeCostText.text = upgradeCost.ToString();
+        }
+        else if(!reachMaxLevel)
+        {
+            upgradeCostText.text = upgradeCost.ToString();
+            upgradeButton.interactable = false;
+        }
+        else
+        {
+            upgradeCostText.text = "Max Level";
+            upgradeButton.gameObject.SetActive(false);
+        }
 
         // Очищаем все предыдущие слушатели и добавляем новый для текущего улучшения
         upgradeButton.onClick.RemoveAllListeners();
@@ -73,6 +94,7 @@ public class StatUpgradeUI : MonoBehaviour
             UpdateUI();
         }
     }
+
 
     private void UpdateUI()
     {
@@ -93,6 +115,6 @@ public class StatUpgradeUI : MonoBehaviour
     {
         // Прячем универсальное окно до выбора апгрейда
         //upgradeButton.gameObject.SetActive(false);
-        UpgradeWindow.SetActive(false);
+        upgradeWindow.SetActive(false);
     }
 }

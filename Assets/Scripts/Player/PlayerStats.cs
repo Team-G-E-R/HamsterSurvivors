@@ -31,13 +31,13 @@ public class PlayerStats : MonoBehaviour, IStatSubject
         }
     }
 
-    private float _playerMoveSpeedModifire = 1;
-    public float PlayerMoveSpeedModifire
+    private float _playerMoveSpeedModifier = 1;
+    public float PlayerMoveSpeedModifier
     {
-        get => _playerMoveSpeedModifire;
+        get => PlayerMoveSpeedModifier;
         set
         {
-            _playerMoveSpeedModifire = value;
+            PlayerMoveSpeedModifier = value;
             NotifySpeedChanged();
         }
     }
@@ -110,7 +110,7 @@ public class PlayerStats : MonoBehaviour, IStatSubject
     {
         foreach (var observer in playerObservers)
         {
-            observer.OnSpeedChanged(PlayerMoveSpeedModifire);
+            observer.OnSpeedChanged(PlayerMoveSpeedModifier);
         }
     }
 

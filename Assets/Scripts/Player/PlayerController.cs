@@ -49,12 +49,21 @@ public class PlayerController : Hp, PlayerStatsObserver
 
     private void Move()
     {
-        float hor = Input.GetAxis("Horizontal");
-        float ver = Input.GetAxis("Vertical");
-        Vector2 step = new Vector2(hor, ver);
+        float hor = Input.GetAxisRaw("Horizontal");
+        float ver = Input.GetAxisRaw("Vertical");
+        Vector2 step = new Vector2(hor, ver).normalized;
 
-        rb.velocity = step * Time.deltaTime * _moveSpeedMulti * _moveSpeedConst;
-        //transform.position += step * moveSpeed * Time.deltaTime;
+        if(step != Vector2.zero )
+        {
+            rb.velocity = step * Time.deltaTime * _moveSpeedMulti * _moveSpeedConst;
+        }
+        else
+        {
+            Debug.Log("Zero");
+            rb.velocity = Vector2.zero;
+        }
+        
+        Debug.Log(step + " Velocity");
     }
 
     public override void TakeDamage(float damage)

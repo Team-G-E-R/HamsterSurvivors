@@ -18,7 +18,7 @@ public class UpgradeItemUI : MonoBehaviour
         UpdateUI();
 
         // Добавляем обработчик нажатия на элемент улучшения
-        //GetComponent<Button>().onClick.AddListener(() => onSelected.Invoke());
+        GetComponent<Button>().onClick.AddListener(() => onSelectedCallback.Invoke());
     }
 
     public void UpdateUI()

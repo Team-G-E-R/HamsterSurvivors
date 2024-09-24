@@ -1,5 +1,5 @@
 {
-    "idSave": 4,
+    "idSave": 25,
     "isFirstSession": false,
     "language": "en",
     "promptDone": false,
@@ -10,7 +10,8 @@
         true,
         false
     ],
-    "gold": 80,
+    "gold": 2,
+    "saveStats": "",
     "playerMaxHealth": 100.0,
     "PlayerArmor": 0.0,
     "_playerMoveSpeedModifire": 1.0,

@@ -6,26 +6,21 @@ using UnityEngine;
 
 public class GameLogic : MonoBehaviour
 {
-    public UnlockManager unlockManager; // Ссылка на UnlockManager
-    public Item[] allItems; // Все предметы, которые могут быть использованы в игре
+    private static GameLogic instance;
 
-    private void Start()
-    {
-        // Пример разблокировки предмета при выполнении определенных условий
-        //unlockManager.UnlockItem(allItems[0].uniqueId);
-    }
+    public static GameLogic Instance { get { return instance; }}
 
-    public void TryEquipItem(int itemID)
+    private void Awake()
     {
-        // Проверка, что предмет разблокирован перед его использованием
-        if (unlockManager.IsItemUnlocked(itemID))
+        if (FindObjectsOfType(typeof(GameLogic)).Length > 1)
         {
-            Debug.Log($"Item {itemID} can be equipped!");
-            // Реализация логики экипировки
+            Destroy(gameObject);
+            return;
         }
-        else
-        {
-            Debug.Log($"Item {itemID} is not unlocked yet.");
-        }
+
+        instance = this;
+        DontDestroyOnLoad(gameObject);
     }
+    
+
 }
