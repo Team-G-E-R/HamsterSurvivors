@@ -7,7 +7,7 @@ public class PlayerData
 {
     public float playerMaxHealth;
     public float playerHealthRegen;
-    public float weaponDamage;
+    public float weaponDamageModifier;
     public float playerMoveSpeedModifier;
     public float playerArmor;
     public float activeItemsCooldown;
