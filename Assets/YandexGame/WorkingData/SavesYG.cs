@@ -20,8 +20,8 @@ namespace YG
 
         //Глобал
         public int gold = 0;
-        public string globalStats;
-        public string upgradeLevels;
+        public string globalStats = "";
+        public string upgradeLevels = "";
 
         //Игрок
         public float playerMaxHealth = 100;

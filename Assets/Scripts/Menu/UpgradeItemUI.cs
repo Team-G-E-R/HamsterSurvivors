@@ -23,7 +23,7 @@ public class UpgradeItemUI : MonoBehaviour
 
     public void UpdateUI()
     {
-        statNameText.text = upgradeData.statName;
+        statNameText.text = upgradeData.itemName;
         levelText.text = $"Level: {upgradeData.currentLevel}/{upgradeData.maxLevel}";
         iconImage.sprite = upgradeData.icon;
     }

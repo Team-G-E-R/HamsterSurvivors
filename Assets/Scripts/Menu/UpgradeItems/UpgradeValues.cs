@@ -2,9 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-using UnityEngine;
 
-[CreateAssetMenu(fileName = "StatUpgradeData", menuName = "Game/Stat Upgrade Data")]
+[CreateAssetMenu(fileName = "StatUpgradeData", menuName = "Game/Upgrades level data")]
 public class UpgradeValues : ScriptableObject
 {
     [Header("Upgrades Values")]
@@ -14,7 +13,7 @@ public class UpgradeValues : ScriptableObject
     public float playerMoveSpeedModifier = 5;
     public float playerArmor = 5;
     public float activeItemsCooldown = 5;
-    public float experienceGainModifierModifier = 5;
+    public float experienceGainModifier = 5;
     public float experienceTakingRange = 2;
 }
 

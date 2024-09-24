@@ -4,6 +4,7 @@ using UnityEngine;
 public class StatUpgradeData : ScriptableObject
 {
     [Header("Upgrade Information")]
+    public string itemName;
     public string statName;
     public string description;
     public Sprite icon;

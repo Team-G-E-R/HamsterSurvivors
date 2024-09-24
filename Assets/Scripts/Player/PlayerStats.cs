@@ -34,7 +34,7 @@ public class PlayerStats : MonoBehaviour, IStatSubject
     private float _playerMoveSpeedModifier = 1;
     public float PlayerMoveSpeedModifier
     {
-        get => PlayerMoveSpeedModifier;
+        get => _playerMoveSpeedModifier;
         set
         {
             PlayerMoveSpeedModifier = value;

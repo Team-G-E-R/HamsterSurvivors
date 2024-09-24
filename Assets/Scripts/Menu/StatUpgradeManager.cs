@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using YG;
+using UnityEngine.Events;
 
 public class StatUpgradeManager : MonoBehaviour
 {
@@ -11,8 +12,22 @@ public class StatUpgradeManager : MonoBehaviour
     [SerializeField] private UpgradeValues upgradeValues;
     public int currentGold { get; private set; }
     private PlayerData currentPlayerData = new PlayerData();
+    public UnityEvent refreshShop = new UnityEvent();
 
-    private string upgradeSavePath => Application.persistentDataPath + "/statUpgrades.json";
+
+    private static StatUpgradeManager instance;
+
+    public static StatUpgradeManager Instance { get { return instance; } }
+
+    private void Awake()
+    {
+        if (FindObjectsOfType(typeof(GameLogic)).Length > 1)
+        {
+            Destroy(gameObject);
+            return;
+        }
+        instance = this;
+    }
 
     private void Start()
     {
@@ -26,6 +41,16 @@ public class StatUpgradeManager : MonoBehaviour
         }
     }
 
+    private void Update()
+    {
+        if(Input.GetKeyDown(KeyCode.F))
+        {
+            
+            PlayerPrefs.DeleteAll();
+            YandexGame.ResetSaveProgress();
+        }
+    }
+
     public void AddGold(int gold)
     {
         currentGold += gold;
@@ -33,6 +58,7 @@ public class StatUpgradeManager : MonoBehaviour
         {
             currentGoldText.text = currentGold.ToString();
         }
+        refreshShop.Invoke();
 
         YandexGame.savesData.gold = currentGold;
         YandexGame.SaveProgress();
@@ -47,6 +73,7 @@ public class StatUpgradeManager : MonoBehaviour
         }
         YandexGame.savesData.gold = currentGold;
         YandexGame.SaveProgress();
+        
     }
 
     public void UpgradeStat(int index)
@@ -56,14 +83,15 @@ public class StatUpgradeManager : MonoBehaviour
         StatUpgradeData upgrade = statUpgrades[index];
         if (upgrade.currentLevel < upgrade.maxLevel)
         {
+            RemoveGold(GetUpgradeCost(upgrade));
             upgrade.currentLevel++;
             ApplyUpgrade(upgrade);
             SaveUpgrades();
         }
 
-        RemoveGold(GetUpgradeCost(upgrade));
         YandexGame.savesData.gold = currentGold;
         YandexGame.SaveProgress();
+
     }
 
     public int TryGetUpgradeCost(int index)
@@ -75,7 +103,6 @@ public class StatUpgradeManager : MonoBehaviour
 
         if (upgrade.currentLevel < upgrade.maxLevel)
         {
-            Debug.Log(actualUpgradeCost + " upgradeCost");
             return (int)actualUpgradeCost;
         }
 
@@ -96,12 +123,28 @@ public class StatUpgradeManager : MonoBehaviour
                 Debug.Log("UpgradeHealth");
                 upgradedData.playerMaxHealth += upgradeValues.playerMaxHealth;
                 break;
-            case "AttackDamage":
-                upgradedData.playerMaxHealth += upgradeValues.weaponDamageModifier;
-                break;
             case "MovementSpeed":
-                upgradedData.playerMaxHealth += upgradeValues.playerMoveSpeedModifier;
+                upgradedData.playerMoveSpeedModifier += upgradeValues.playerMoveSpeedModifier;
                 break;
+            case "WeaponDamageMulti":
+                upgradedData.weaponDamageModifier += upgradeValues.weaponDamageModifier;
+                break;
+            case "activeItemsCooldown":
+                upgradedData.activeItemsCooldown += upgradeValues.activeItemsCooldown;
+                break;
+            case "experienceGainModifier":
+                upgradedData.experienceGainModifier += upgradeValues.experienceGainModifier;
+                break;
+            case "playerArmor":
+                upgradedData.playerArmor += upgradeValues.playerArmor;
+                break;
+            case "playerHealthRegen":
+                upgradedData.playerHealthRegen += upgradeValues.playerHealthRegen;
+                break;
+            case "experienceTakingRange":
+                upgradedData.experienceTakingRange += upgradeValues.experienceTakingRange;
+                break;
+
         }
         SavePlayerStats(upgradedData);
     }
@@ -109,6 +152,7 @@ public class StatUpgradeManager : MonoBehaviour
     // Загрузка уровней улучшений из JSON-файла
     private void LoadUpgrades()
     {
+
         if (YandexGame.savesData.upgradeLevels != "")
         {
             string json = YandexGame.savesData.upgradeLevels;
@@ -130,6 +174,10 @@ public class StatUpgradeManager : MonoBehaviour
         }
         else
         {
+            foreach (var upgrade in statUpgrades)
+            {
+                upgrade.currentLevel = 0;
+            }
             Debug.Log("No save file found, using default upgrade levels.");
         }
     }
