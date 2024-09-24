@@ -13,6 +13,7 @@ public class PlayerController : Hp, PlayerStatsObserver
     [SerializeField] private float shootSpeed;
     [SerializeField] private float shootDelay;
     [SerializeField] private float healthRegen;
+    [SerializeField] Animator animator;
     [Header("MoveSpeedConst")]
     [SerializeField] private float _moveSpeedConst = 300;
     
@@ -25,6 +26,7 @@ public class PlayerController : Hp, PlayerStatsObserver
         UpdateHealthUI();
         currentHealth = maxHealth / 2;
         rb= GetComponent<Rigidbody2D>();
+        animator = GetComponent<Animator>();
     }
 
     private Transform enemyPos;
@@ -51,11 +53,15 @@ public class PlayerController : Hp, PlayerStatsObserver
     {
         float hor = Input.GetAxisRaw("Horizontal");
         float ver = Input.GetAxisRaw("Vertical");
+        animator.SetFloat("moveX", hor);
+        animator.SetFloat("moveY", ver);
+
         Vector2 step = new Vector2(hor, ver).normalized;
 
         if(step != Vector2.zero )
         {
             rb.velocity = step * Time.deltaTime * _moveSpeedMulti * _moveSpeedConst;
+            animator.SetFloat("speed", rb.velocity.sqrMagnitude);
         }
         else
         {
