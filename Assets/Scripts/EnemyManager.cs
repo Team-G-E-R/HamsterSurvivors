@@ -109,9 +109,37 @@ public class EnemyManager : MonoBehaviour
     private void Spawn()
     {
         int count = UnityEngine.Random.Range(CurrentWave.countMin, CurrentWave.countMax + 1);
-        for (int i  = 0; i < count; i++)
+
+        // Получаем размеры камеры
+        Camera cam = Camera.main;
+        float camHeight = 2f * cam.orthographicSize;
+        float camWidth = camHeight * cam.aspect;
+
+        // Получаем позицию центра камеры
+        Vector3 camPosition = cam.transform.position;
+
+        for (int i = 0; i < count; i++)
         {
-            var position = center.position + (Vector3)UnityEngine.Random.insideUnitCircle * SpawnRadius;
+            // Случайно выбираем одну из четырех сторон
+            int side = UnityEngine.Random.Range(0, 4);
+            Vector3 position = Vector3.zero;
+
+            switch (side)
+            {
+                case 0: // Верхняя сторона
+                    position = new Vector3(UnityEngine.Random.Range(camPosition.x - camWidth / 2, camPosition.x + camWidth / 2), camPosition.y + camHeight / 2 + SpawnRadius, 0);
+                    break;
+                case 1: // Нижняя сторона
+                    position = new Vector3(UnityEngine.Random.Range(camPosition.x - camWidth / 2, camPosition.x + camWidth / 2), camPosition.y - camHeight / 2 - SpawnRadius, 0);
+                    break;
+                case 2: // Левая сторона
+                    position = new Vector3(camPosition.x - camWidth / 2 - SpawnRadius, UnityEngine.Random.Range(camPosition.y - camHeight / 2, camPosition.y + camHeight / 2), 0);
+                    break;
+                case 3: // Правая сторона
+                    position = new Vector3(camPosition.x + camWidth / 2 + SpawnRadius, UnityEngine.Random.Range(camPosition.y - camHeight / 2, camPosition.y + camHeight / 2), 0);
+                    break;
+            }
+
             Instantiate(CurrentWave.enemyPrefab, position, Quaternion.identity);
         }
     }

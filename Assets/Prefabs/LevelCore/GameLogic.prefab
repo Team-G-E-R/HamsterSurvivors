@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &8880946625497659717
+--- !u!1 &3085646174470037743
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,46 +8,45 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 8880946625497659719}
-  - component: {fileID: 8880946625497659768}
+  - component: {fileID: 2823193649926221433}
+  - component: {fileID: 1315215420177992907}
   m_Layer: 0
-  m_Name: HeartItem
+  m_Name: GameLogic
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &8880946625497659719
+--- !u!4 &2823193649926221433
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8880946625497659717}
+  m_GameObject: {fileID: 3085646174470037743}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -5.611165, y: -4.510768, z: -0.13590112}
+  m_LocalPosition: {x: -1.7770711, y: -6.784888, z: 6.8890243}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &8880946625497659768
+--- !u!114 &1315215420177992907
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8880946625497659717}
+  m_GameObject: {fileID: 3085646174470037743}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e1ca2b72ca565654aa91fec59a483d97, type: 3}
+  m_Script: {fileID: 11500000, guid: cb07908bc519dad4ea434489abed8c5b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ActiveItem: 0
-  itemSptite: {fileID: 21300000, guid: d522842a954e2074a83f8836ef2a389c, type: 3}
-  itemName: "\u041A\u0443\u0431\u043E\u043A"
-  itemDescription: "\u041F\u043E\u0432\u044B\u0448\u0430\u0435\u0442 \u043C\u0430\u043A\u0441\u0438\u043C\u0430\u043B\u044C\u043D\u043E\u0435
-    \u0437\u0434\u043E\u0440\u043E\u0432\u044C\u0435"
-  uniqueId: 5
-  _affectsActiveItems: 0
+  allItems:
+  - {fileID: 8880946625497659768, guid: 83f214f188c77544bb0bc8073d00b91d, type: 3}
+  - {fileID: 352150871581855867, guid: 5e45ae2d99fa4c74388789df9e7c2ab0, type: 3}
+  - {fileID: 2609183218579318020, guid: b4155bc9f0687c640b52721382db2ebb, type: 3}
+  - {fileID: 1989242889743312031, guid: 36d98e835d4f960448e14019580024c4, type: 3}
+  - {fileID: 1989242889743312031, guid: dd4ebac22e04ca74fac8a7271b87a1b1, type: 3}

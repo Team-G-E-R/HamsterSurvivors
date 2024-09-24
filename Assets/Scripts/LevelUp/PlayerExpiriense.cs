@@ -158,8 +158,8 @@ public class PlayerExpiriense : MonoBehaviour
     {
         UpdatedItem updateItem = Instantiate(Resources.Load<UpdatedItem>("LevelUp/UpdatedSkill"), Vector3.zero, Quaternion.identity);
         updateItem.transform.SetParent(UpdateGridLayout.transform);
-
-        updateItem.InitializeItem(item.itemSptite, item.GetNextModificationText(), item.GetItemCurrentLevel().ToString());
+         
+        updateItem.InitializeItem(item.itemSptite, item.GetNextModificationText(), (item.GetItemCurrentLevel()+1).ToString() + " уровень");
         LevelUpItems.Add(updateItem.gameObject);
 
         Button button = updateItem.GetComponentInChildren<Button>();
@@ -172,7 +172,7 @@ public class PlayerExpiriense : MonoBehaviour
         NewItem newItem = Instantiate(Resources.Load<NewItem>("LevelUp/NewItem"), Vector3.zero, Quaternion.identity);
         newItem.transform.SetParent(UpdateGridLayout.transform);
 
-        newItem.InitializeItem(item.itemSptite, item.itemName, "gaggg");
+        newItem.InitializeItem(item.itemSptite, item.itemName, item.itemDescription);
         LevelUpItems.Add(newItem.gameObject);
 
         Button button = newItem.GetComponentInChildren<Button>();

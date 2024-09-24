@@ -10,6 +10,7 @@ public class Item : MonoBehaviour
     protected int currentModificationLevel = 0; // Текущий уровень модификации
     public List<Modification> modifications = new List<Modification>();
     public string itemName;
+    public string itemDescription = "Описание предмета";
     public int uniqueId;
 
 
