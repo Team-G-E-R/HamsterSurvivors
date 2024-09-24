@@ -27,13 +27,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1143874391252403509}
+  serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -0.059999943, y: 0.95000005, z: -4.51}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1143874391553020795}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!20 &1143874391252403510
 Camera:
@@ -45,13 +45,21 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 2
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_BackGroundColor: {r: 0.23529413, g: 0.4039216, b: 0.11764707, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
+  m_Iso: 200
+  m_ShutterSpeed: 0.005
+  m_Aperture: 16
+  m_FocusDistance: 10
+  m_FocalLength: 50
+  m_BladeCount: 5
+  m_Curvature: {x: 2, y: 11}
+  m_BarrelClipping: 0.25
+  m_Anamorphism: 0
   m_SensorSize: {x: 36, y: 24}
   m_LensShift: {x: 0, y: 0}
-  m_FocalLength: 50
   m_NormalizedViewPortRect:
     serializedVersion: 2
     x: 0
@@ -136,8 +144,9 @@ GameObject:
   - component: {fileID: 8543894299902126150}
   - component: {fileID: 8272119311348720398}
   - component: {fileID: 2004232919717620343}
+  - component: {fileID: 7558284608439809594}
   m_Layer: 7
-  m_Name: Player
+  m_Name: Player 1
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -150,6 +159,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1143874391553020775}
+  serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -7.03, y: -0.8, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -159,7 +169,6 @@ Transform:
   - {fileID: 8543894301286721160}
   - {fileID: 8543894300155849417}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!50 &1143874391553020793
 Rigidbody2D:
@@ -178,6 +187,12 @@ Rigidbody2D:
   m_AngularDrag: 0.05
   m_GravityScale: 0
   m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
@@ -223,12 +238,12 @@ SpriteRenderer:
   m_SortingLayerID: -1869315837
   m_SortingLayer: 1
   m_SortingOrder: 50
-  m_Sprite: {fileID: 21300000, guid: ec47f75fe8aff1644ac73998f4ad31b5, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 535a2318123598d4db8ae69c523dd7d0, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 0.65625, y: 1.5}
+  m_Size: {x: 1.2, y: 2.35}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -256,6 +271,7 @@ MonoBehaviour:
   shootSpeed: 5
   shootDelay: 1
   healthRegen: 1
+  animator: {fileID: 0}
   _moveSpeedConst: 300
   hpText: {fileID: 0}
 --- !u!58 &1143874391553020796
@@ -268,12 +284,31 @@ CircleCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0.75}
+  m_Offset: {x: 0.0071032047, y: -0.12370217}
   serializedVersion: 2
-  m_Radius: 0.75
+  m_Radius: 0.6789677
 --- !u!114 &8543894299902126150
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -296,6 +331,7 @@ MonoBehaviour:
   LevelUpPanel: {fileID: 0}
   UpdateGridLayout: {fileID: 0}
   _itemManager: {fileID: 0}
+  UnlockManager: {fileID: 0}
 --- !u!114 &8272119311348720398
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -312,7 +348,7 @@ MonoBehaviour:
   ActiveItemsProjSpeed: 0
   PlayerArmor: 0
   PlayerExpirienseModifire: 0
-  playerController: {fileID: 0}
+  playerController: {fileID: 1143874391553020797}
 --- !u!114 &2004232919717620343
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -330,6 +366,27 @@ MonoBehaviour:
   PlayerArmor: 100
   PlayerExpirienseModifire: 100
   playerController: {fileID: 0}
+--- !u!95 &7558284608439809594
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1143874391553020775}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: bd9ef1a0e5103d441b85bb2d32964e69, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &8543894300155849418
 GameObject:
   m_ObjectHideFlags: 0
@@ -353,13 +410,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8543894300155849418}
+  serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -0.01, y: 0.66, z: 39.986256}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1143874391553020795}
-  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8543894301286721161
 GameObject:
@@ -386,13 +443,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8543894301286721161}
+  serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1143874391553020795}
-  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &8543894301286721158
 MonoBehaviour:
@@ -439,4 +496,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weaponManager: {fileID: 8543894301286721158}
   weaponSlots: {fileID: 8543894300155849418}
+  unlockManager: {fileID: 0}
   testItem: {fileID: 0}
