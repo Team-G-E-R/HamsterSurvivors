@@ -12,7 +12,7 @@ using static UnityEditor.Progress;
 public class PlayerExpiriense : MonoBehaviour
 {
     private int _currentLevel;
-    private int _currentExp;
+    private float _currentExp;
     private int _expToNewLvl = 10;
     private float _vacuumSpeed = 6f;
     private List<GameObject> LevelUpItems = new List<GameObject>();
@@ -33,7 +33,7 @@ public class PlayerExpiriense : MonoBehaviour
     private void Start()
     {
         UpdateLevelUi();
-        playerPos = FindObjectOfType<PlayerController>().transform;
+        playerPos = PlayerController.instance.transform;
 
     }
 
@@ -57,7 +57,7 @@ public class PlayerExpiriense : MonoBehaviour
 
     private void ConsumeExpChard(GameObject expChard)
     {
-        _currentExp++;
+        _currentExp += 2;
         Destroy(expChard);
 
         UpdateLevelState();
@@ -65,7 +65,6 @@ public class PlayerExpiriense : MonoBehaviour
 
     private void UpdateLevelState()
     {
-        _currentExp++;
         if (_currentExp >= _expToNewLvl)
         {
             LevelUp();
@@ -80,7 +79,7 @@ public class PlayerExpiriense : MonoBehaviour
     private void UpdateLevelUi()
     {
         _expSlider.value = (float)(_currentExp / (float)_expToNewLvl);
-        _expText.text = ($"{_currentExp} / {_expToNewLvl}");
+        _expText.text = ($"{(int)_currentExp} / {_expToNewLvl}");
         _levelText.text = _currentLevel.ToString();
     }
 

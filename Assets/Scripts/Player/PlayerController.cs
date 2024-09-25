@@ -16,21 +16,27 @@ public class PlayerController : Hp, PlayerStatsObserver
     [SerializeField] Animator animator;
     [Header("MoveSpeedConst")]
     [SerializeField] private float _moveSpeedConst = 300;
-    
+    private Transform enemyPos;
+    private float shootTimer;
     private Rigidbody2D rb;
 
     public TMP_Text hpText;
+    public static PlayerController instance;
+
+    private void Awake()
+    {
+        instance = this;
+    }
 
     private void Start()
     {
         UpdateHealthUI();
-        currentHealth = maxHealth / 2;
+        currentHealth = maxHealth;
         rb= GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
     }
 
-    private Transform enemyPos;
-    private float shootTimer;
+    
 
 
     private void Update()

@@ -6,6 +6,11 @@ using UnityEngine;
 
 public class PlayerStats : MonoBehaviour, IStatSubject
 {
+    public static PlayerStats instance;
+
+    private List<WeaponStatsObserver> weaponObservers = new List<WeaponStatsObserver>();
+    private List<PlayerStatsObserver> playerObservers = new List<PlayerStatsObserver>();
+
     public float ActiveItemsCooldown;
     public float ActiveItemsProjSpeed;
 
@@ -37,18 +42,14 @@ public class PlayerStats : MonoBehaviour, IStatSubject
         get => _playerMoveSpeedModifier;
         set
         {
-            PlayerMoveSpeedModifier = value;
+            _playerMoveSpeedModifier = value;
             NotifySpeedChanged();
         }
     }
 
     public float PlayerArmor;   
     public float PlayerExpirienseModifire;
-    public static PlayerStats instance;
-    public PlayerController playerController;
-
-    private List<WeaponStatsObserver> weaponObservers = new List<WeaponStatsObserver>();
-    private List<PlayerStatsObserver> playerObservers = new List<PlayerStatsObserver>();
+    
 
     private void Awake()
     {

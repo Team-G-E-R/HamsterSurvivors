@@ -1,5 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.ComponentModel;
+using UnityEditor.Animations;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -18,9 +20,11 @@ public class ItemManager : MonoBehaviour
 
     private void Awake()
     {
-        weaponSlotImages = weaponContainerUi.GetComponentsInChildren<Image>();
-        passiveItamesSlotImages = passiveItemContainerUi.GetComponentsInChildren<Image>();
-        itemSlots = new Item[weaponSlots.Length + passiveItemSlots.Length];
+         weaponSlotImages = weaponContainerUi.GetComponentsInChildren<Image>();
+         passiveItamesSlotImages = passiveItemContainerUi.GetComponentsInChildren<Image>();
+        
+
+        itemSlots = new Item[weaponSlots.Length + passiveItemSlots.Length];  
     }
 
     private void Start()
@@ -44,12 +48,12 @@ public class ItemManager : MonoBehaviour
         Item item = Instantiate(new_item, transform.position, Quaternion.identity);
         item.transform.SetParent(weaponContainerOb.transform, true);
 
-        if (item is Weapon && GetFreeSlotIndex(weaponSlots)!= null)
-        { 
+        if (item is Weapon && GetFreeSlotIndex(weaponSlots) != null)
+        {
             int freeWeaponSlot = (int)GetFreeSlotIndex(weaponSlots);
             weaponSlots[freeWeaponSlot] = (Weapon)item;
             itemSlots[(int)GetFreeSlotIndex(itemSlots)] = item;
-            weaponSlotImages[freeWeaponSlot].sprite = item.itemSptite;    
+            weaponSlotImages[freeWeaponSlot].sprite = item.itemSptite;
         }
         else if (item is PassiveItem && GetFreeSlotIndex(passiveItemSlots) != null)
         {
@@ -61,8 +65,9 @@ public class ItemManager : MonoBehaviour
         else
         {
             return;
-        }   
+        }
     }
+
 
     private int? GetFreeSlotIndex (Item[] slots)
     {

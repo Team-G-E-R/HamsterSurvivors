@@ -31,7 +31,7 @@ public abstract class Weapon : Item
         currentProjectileSize = baseProjectileSize;
         currentCooldown = baseCooldown;
 
-        playerPos = FindObjectOfType<PlayerController>().transform;
+        playerPos = PlayerController.instance.transform;
 
         //ApplyCurrentModification();
     }
