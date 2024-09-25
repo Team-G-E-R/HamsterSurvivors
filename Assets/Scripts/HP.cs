@@ -31,15 +31,17 @@ public class Hp : MonoBehaviour
         if (IsDeath && !isPlayer)
         {
             Instantiate(_expShardPrefab, transform.position, Quaternion.identity);
-            Destroy(gameObject);
+            Death();
         }
         /*if (isPlayer && IsDeath)
         {
             SceneManager.LoadScene(0);
         }*/
+    }
 
-    
-
+    public virtual void Death()
+    {
+        Destroy(gameObject);
     }
 
 }

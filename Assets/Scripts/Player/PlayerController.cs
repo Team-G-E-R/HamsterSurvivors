@@ -30,14 +30,14 @@ public class PlayerController : Hp, PlayerStatsObserver
 
     private void Start()
     {
-        UpdateHealthUI();
         currentHealth = maxHealth;
+        UpdateHealthUI();
         rb= GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
     }
 
     
-
+ 
 
     private void Update()
     {
@@ -103,7 +103,7 @@ public class PlayerController : Hp, PlayerStatsObserver
 
     private void HpRegen()
     {
-        if(healthRegen > 0)
+        if(healthRegen > 0 && currentHealth < maxHealth)
         {
             currentHealth += healthRegen*Time.deltaTime;
             UpdateHealthUI();

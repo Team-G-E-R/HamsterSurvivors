@@ -2,10 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System;
-using UnityEngine.PlayerLoop;
-using Unity.VisualScripting;
-using static UnityEngine.GraphicsBuffer;
-using Unity.Mathematics;
 
 public class EnemyManager : MonoBehaviour
 {
@@ -51,10 +47,6 @@ public class EnemyManager : MonoBehaviour
     private Wave CurrentWave => waves[waveIndex];
 
     private bool HasWaves => waveIndex < waves.Length;
-
-
-
-
 
     private void FixedUpdate()
     {
