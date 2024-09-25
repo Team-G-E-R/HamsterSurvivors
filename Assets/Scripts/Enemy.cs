@@ -7,11 +7,13 @@ public class Enemy : Hp
     [SerializeField] private float moveSpeed;
 
     [SerializeField] private bool isDestroyItem;
+     private GameObject _expShardPrefab;
 
     private Transform target;
 
     private void Start()
     {
+        _expShardPrefab = Resources.Load<GameObject>("XpShard");
         target = GameObject.FindWithTag("Player").transform;
         EnemyManager.instance.AddTransformToList(this.gameObject.transform);
     }
@@ -27,15 +29,30 @@ public class Enemy : Hp
     {
         if(isDestroyItem)
         {
-            DropRandomItemOrNthg();
-            
+            DropRandomItemOrNthg();          
         }
-        base.Death();
-       
+        else
+        {
+            Instantiate(_expShardPrefab, transform.position, Quaternion.identity);
+        }
+        base.Death();     
     }
 
     private void DropRandomItemOrNthg()
     {
+        int randomNum = Random.Range(0, 100);
 
+        if(randomNum > 95)
+        {
+            Instantiate(Resources.Load<Consumable>("ConsumableItems/HealItem"), transform.position, Quaternion.identity);
+        }
+        else if(randomNum > 65)
+        {
+            Instantiate(Resources.Load<Consumable>("ConsumableItems/Coin"), transform.position, Quaternion.identity);
+        }
+        else
+        {
+            return;
+        }
     }
 }

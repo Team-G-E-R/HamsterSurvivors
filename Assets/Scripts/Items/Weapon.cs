@@ -57,11 +57,7 @@ public abstract class Weapon : Item
         buff.Invoke(this);
     }
 
-
-    
-
-    // Метод для активации следующего уровня модификации
-    
+    // Метод для активации следующего уровня модификации  
 
     public void SetDamage(float value)
     {

@@ -90,10 +90,12 @@ public class EnemyManager : MonoBehaviour
         {
             if(t != null)
             {
-                Rigidbody2D rigidbody2D = t.GetComponent<Rigidbody2D>();
-                Vector2 direction = (_player.position - t.position).normalized;
-                //t.position += direction * 2 * Time.deltaTime
-                rigidbody2D.MovePosition(rigidbody2D.position + (direction*Time.deltaTime*UnityEngine.Random.Range(0.3f, 1f) * enemySpeed));
+                //Rigidbody2D rigidbody2D = t.GetComponent<Rigidbody2D>();
+                if(t.TryGetComponent<Rigidbody2D>(out Rigidbody2D rigidbody2D))
+                {
+                    Vector2 direction = (_player.position - t.position).normalized;
+                    rigidbody2D.MovePosition(rigidbody2D.position + (direction * Time.deltaTime * UnityEngine.Random.Range(0.3f, 1f) * enemySpeed));
+                }   
             } 
         }
     }

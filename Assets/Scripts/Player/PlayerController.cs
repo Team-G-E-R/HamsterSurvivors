@@ -89,6 +89,12 @@ public class PlayerController : Hp, PlayerStatsObserver
         hpText.text = ($"{Mathf.RoundToInt(currentHealth)}/{maxHealth}");
     }
 
+    public void ApplyHeal(int healAmount)
+    {
+        currentHealth += healAmount;
+        currentHealth = Mathf.Clamp(currentHealth, 0, maxHealth);
+        UpdateHealthUI();
+    }
 
     public void OnMaxHealthChanged(float newHealth)
     {

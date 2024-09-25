@@ -48,7 +48,16 @@ public class PlayerExpiriense : MonoBehaviour
                 col.transform.position = Vector3.MoveTowards(col.transform.position, playerPos.position, _vacuumSpeed * Time.deltaTime);
                 if (Vector2.Distance(col.transform.position, playerPos.position) < 0.5f)
                 {
-                    ConsumeExpChard(col.gameObject);
+                    if(col.gameObject.TryGetComponent<Consumable>(out Consumable component))
+                    {
+                        //test
+                        Destroy(col.gameObject);
+                    }
+                    else
+                    {
+                        ConsumeExpChard(col.gameObject);
+                    }
+                    
                 }
             }
         }
@@ -137,8 +146,6 @@ public class PlayerExpiriense : MonoBehaviour
 
         ShowLevelUpItems(choosenItemToLevelUp);
     }
-
-  
 
     private void ShowLevelUpItems(List<Item> itemsToLevelUp)
     {

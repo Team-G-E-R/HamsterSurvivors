@@ -8,7 +8,7 @@ public class Hp : MonoBehaviour
 {
     [SerializeField] private bool isPlayer;
     [SerializeField] protected float maxHealth;
-    [SerializeField] private GameObject _expShardPrefab;
+   
 
     protected float currentHealth;
 
@@ -30,7 +30,6 @@ public class Hp : MonoBehaviour
 
         if (IsDeath && !isPlayer)
         {
-            Instantiate(_expShardPrefab, transform.position, Quaternion.identity);
             Death();
         }
         /*if (isPlayer && IsDeath)
@@ -38,6 +37,8 @@ public class Hp : MonoBehaviour
             SceneManager.LoadScene(0);
         }*/
     }
+
+    
 
     public virtual void Death()
     {
