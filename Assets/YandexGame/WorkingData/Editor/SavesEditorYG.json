@@ -1,5 +1,5 @@
 {
-    "idSave": 157,
+    "idSave": 191,
     "isFirstSession": false,
     "language": "en",
     "promptDone": false,
@@ -10,9 +10,9 @@
         true,
         false
     ],
-    "gold": 7171,
-    "globalStats": "{\"playerMaxHealth\":0.0,\"playerHealthRegen\":0.0,\"weaponDamageModifier\":0.0,\"playerMoveSpeedModifier\":0.0,\"playerArmor\":5.0,\"activeItemsCooldown\":0.0,\"experienceGainModifier\":0.0,\"experienceTakingRange\":4.0}",
-    "upgradeLevels": "{\n    \"upgrades\": [\n        {\n            \"statName\": \"activeItemsCooldown\",\n            \"currentLevel\": 0\n        },\n        {\n            \"statName\": \"experienceGainModifier\",\n            \"currentLevel\": 0\n        },\n        {\n            \"statName\": \"experienceTakingRange\",\n            \"currentLevel\": 2\n        },\n        {\n            \"statName\": \"MaxHealth\",\n            \"currentLevel\": 0\n        },\n        {\n            \"statName\": \"MovementSpeed\",\n            \"currentLevel\": 0\n        },\n        {\n            \"statName\": \"playerArmor\",\n            \"currentLevel\": 1\n        },\n        {\n            \"statName\": \"playerHealthRegen\",\n            \"currentLevel\": 0\n        },\n        {\n            \"statName\": \"WeaponDamageMulti\",\n            \"currentLevel\": 0\n        }\n    ]\n}",
+    "gold": 11700,
+    "globalStats": "{\"playerMaxHealth\":0.0,\"playerHealthRegen\":0.5,\"weaponDamageModifier\":30.0,\"playerMoveSpeedModifier\":0.0,\"playerArmor\":10.0,\"activeItemsCooldown\":0.0,\"experienceGainModifier\":0.0,\"experienceTakingRange\":4.0}",
+    "upgradeLevels": "{\n    \"upgrades\": [\n        {\n            \"statName\": \"activeItemsCooldown\",\n            \"currentLevel\": 0\n        },\n        {\n            \"statName\": \"experienceGainModifier\",\n            \"currentLevel\": 0\n        },\n        {\n            \"statName\": \"experienceTakingRange\",\n            \"currentLevel\": 2\n        },\n        {\n            \"statName\": \"MaxHealth\",\n            \"currentLevel\": 0\n        },\n        {\n            \"statName\": \"MovementSpeed\",\n            \"currentLevel\": 0\n        },\n        {\n            \"statName\": \"playerArmor\",\n            \"currentLevel\": 2\n        },\n        {\n            \"statName\": \"playerHealthRegen\",\n            \"currentLevel\": 5\n        },\n        {\n            \"statName\": \"WeaponDamageMulti\",\n            \"currentLevel\": 3\n        }\n    ]\n}",
     "playerMaxHealth": 100.0,
     "PlayerArmor": 0.0,
     "_playerMoveSpeedModifire": 1.0,
