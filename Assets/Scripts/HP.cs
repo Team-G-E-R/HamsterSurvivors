@@ -18,8 +18,7 @@ public class Hp : MonoBehaviour
 
     private void Awake()
     {
-        currentHealth = maxHealth;
-        
+        currentHealth = maxHealth;    
     }
 
 
@@ -32,10 +31,11 @@ public class Hp : MonoBehaviour
         {
             Death();
         }
-        /*if (isPlayer && IsDeath)
+
+        if (isPlayer && IsDeath)
         {
-            SceneManager.LoadScene(0);
-        }*/
+            //Death();
+        }
     }
 
     

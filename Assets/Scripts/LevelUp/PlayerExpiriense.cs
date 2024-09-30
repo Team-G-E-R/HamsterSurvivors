@@ -9,6 +9,16 @@ using System;
 using Unity.Mathematics;
 using static UnityEditor.Progress;
 
+
+public enum ConsumableType
+{
+    Default,
+    AddGold,
+    Heal,              // Лечение
+    AbsorbExperience,   // Поглощение опыта
+
+}
+
 public class PlayerExpiriense : MonoBehaviour
 {
     private int _currentLevel;
@@ -39,6 +49,11 @@ public class PlayerExpiriense : MonoBehaviour
 
     private void Update()
     {
+        CheckForExpAndConsume();
+    }
+
+    private void CheckForExpAndConsume()
+    {
         Collider2D[] hitColliders = Physics2D.OverlapCircleAll(playerPos.position, epxTakingRange, expLayer);
 
         if (hitColliders.Length > 0)
@@ -48,21 +63,20 @@ public class PlayerExpiriense : MonoBehaviour
                 col.transform.position = Vector3.MoveTowards(col.transform.position, playerPos.position, _vacuumSpeed * Time.deltaTime);
                 if (Vector2.Distance(col.transform.position, playerPos.position) < 0.5f)
                 {
-                    if(col.gameObject.TryGetComponent<Consumable>(out Consumable component))
+                    if (col.gameObject.TryGetComponent(out Consumable component))
                     {
                         //test
-                        Destroy(col.gameObject);
+                        ConsumeItem(component);
                     }
                     else
                     {
                         ConsumeExpChard(col.gameObject);
                     }
-                    
+
                 }
             }
         }
     }
-
 
     private void ConsumeExpChard(GameObject expChard)
     {
@@ -71,6 +85,8 @@ public class PlayerExpiriense : MonoBehaviour
 
         UpdateLevelState();
     }
+
+
 
     private void UpdateLevelState()
     {
@@ -85,19 +101,54 @@ public class PlayerExpiriense : MonoBehaviour
         UpdateLevelUi();
     }
 
+    private void ConsumeItem(Consumable consItem)
+    {
+        switch (consItem.consumableType)
+        {
+            case ConsumableType.Heal:
+                ConsumeHealItem(consItem.value);
+                break;
+            case ConsumableType.AbsorbExperience:
+                AbsorbAllExp();
+                break;
+            case ConsumableType.AddGold:
+                ConsumeGoldItem(consItem.value);
+                break;               
+            default:
+                Debug.LogWarning("Неизвестный тип предмета!");
+                break;
+        }
+        Destroy(consItem.gameObject);
+
+    }
+
+    public void ConsumeHealItem(float value)
+    {
+        //test
+        PlayerController.instance.ApplyHeal(value);
+    }
+
+    public void AbsorbAllExp()
+    {
+        //test
+    }
+
+    public void ConsumeGoldItem(float value)
+    {
+        Debug.Log($"Add {value} gold");
+    }
+
     private void UpdateLevelUi()
     {
-        _expSlider.value = (float)(_currentExp / (float)_expToNewLvl);
-        _expText.text = ($"{(int)_currentExp} / {_expToNewLvl}");
+        _expSlider.value = (float)(_currentExp / _expToNewLvl);
+        _expText.text = $"{(int)_currentExp} / {_expToNewLvl}";
         _levelText.text = _currentLevel.ToString();
     }
 
     private void LevelUp()
     {
         LevelUpPanel.SetActive(true);
-
         List<Item> itemsToLevelUp = new List<Item>();
-
 
         foreach (Item item in _itemManager.itemSlots)
         {

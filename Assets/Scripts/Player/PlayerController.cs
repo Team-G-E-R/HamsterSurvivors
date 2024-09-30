@@ -36,9 +36,6 @@ public class PlayerController : Hp, PlayerStatsObserver
         animator = GetComponent<Animator>();
     }
 
-    
- 
-
     private void Update()
     {
         
@@ -71,11 +68,8 @@ public class PlayerController : Hp, PlayerStatsObserver
         }
         else
         {
-            Debug.Log("Zero");
             rb.velocity = Vector2.zero;
-        }
-        
-        Debug.Log(step + " Velocity");
+        }    
     }
 
     public override void TakeDamage(float damage)
@@ -84,16 +78,22 @@ public class PlayerController : Hp, PlayerStatsObserver
         UpdateHealthUI();
     }
 
+    public override void Death()
+    {
+        DeathMenu.instance.TriggerDeathMenu();
+    }
+
     public void UpdateHealthUI()
     {
         hpText.text = ($"{Mathf.RoundToInt(currentHealth)}/{maxHealth}");
     }
 
-    public void ApplyHeal(int healAmount)
+    public void ApplyHeal(float healAmount)
     {
         currentHealth += healAmount;
         currentHealth = Mathf.Clamp(currentHealth, 0, maxHealth);
         UpdateHealthUI();
+        Debug.Log($"healed {healAmount} health");
     }
 
     public void OnMaxHealthChanged(float newHealth)
@@ -106,7 +106,6 @@ public class PlayerController : Hp, PlayerStatsObserver
         UpdateHealthUI();
     }
 
-
     private void HpRegen()
     {
         if(healthRegen > 0 && currentHealth < maxHealth)
@@ -114,6 +113,12 @@ public class PlayerController : Hp, PlayerStatsObserver
             currentHealth += healthRegen*Time.deltaTime;
             UpdateHealthUI();
         }
+    }
+
+
+    public void ResetPlayerHealth()
+    {
+        currentHealth = maxHealth;
     }
 
     private void OnEnable()
@@ -143,5 +148,3 @@ public class PlayerController : Hp, PlayerStatsObserver
         healthRegen = newRegen;
     }
 }
-
-
