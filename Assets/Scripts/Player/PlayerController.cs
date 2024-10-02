@@ -23,6 +23,7 @@ public class PlayerController : Hp, PlayerStatsObserver
     public TMP_Text hpText;
     public static PlayerController instance;
 
+
     private void Awake()
     {
         instance = this;

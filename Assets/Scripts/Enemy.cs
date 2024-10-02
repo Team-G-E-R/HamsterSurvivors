@@ -34,6 +34,7 @@ public class Enemy : Hp
         else
         {
             Instantiate(_expShardPrefab, transform.position, Quaternion.identity);
+            LevelStats.instance.enemiesKilled += 1;
         }
         base.Death();     
     }

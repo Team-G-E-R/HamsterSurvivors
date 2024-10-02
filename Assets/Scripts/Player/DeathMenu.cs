@@ -5,6 +5,7 @@ using UnityEngine;
 public class DeathMenu : MonoBehaviour
 {
     public GameObject deathWindowUI;
+    public GameObject statsWindowUI;
     public static DeathMenu instance;
 
     private void Awake()
@@ -15,8 +16,7 @@ public class DeathMenu : MonoBehaviour
     public void TriggerDeathMenu()
     {
         Time.timeScale = 0;
-        deathWindowUI.SetActive(true);
-        
+        deathWindowUI.SetActive(true);      
     }
 
     public void RevivePlayer()
@@ -28,6 +28,7 @@ public class DeathMenu : MonoBehaviour
 
     public void EndLevel()
     {
-
+        statsWindowUI.SetActive(true);
+        LevelStats.instance.GetLevelStats();
     }
 }

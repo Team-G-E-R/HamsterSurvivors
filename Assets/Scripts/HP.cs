@@ -34,7 +34,7 @@ public class Hp : MonoBehaviour
 
         if (isPlayer && IsDeath)
         {
-            //Death();
+            Death();
         }
     }
 

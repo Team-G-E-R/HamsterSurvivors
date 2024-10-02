@@ -168,6 +168,8 @@ public class PlayerExpiriense : MonoBehaviour
             return; 
         }
 
+        LevelStats.instance.currentLevel = _currentLevel;
+
         ChooseItemsToLevelUp(itemsToLevelUp, possableNewItems);
         Time.timeScale = 0f;
     }
@@ -216,8 +218,8 @@ public class PlayerExpiriense : MonoBehaviour
 
     private void CreateUpdateItemUI(Item item)
     {
-        UpdatedItem updateItem = Instantiate(Resources.Load<UpdatedItem>("LevelUp/UpdatedSkill"), Vector3.zero, Quaternion.identity);
-        updateItem.transform.SetParent(UpdateGridLayout.transform);
+        UpdatedItem updateItem = Instantiate(Resources.Load<UpdatedItem>("LevelUp/UpdatedSkill"), Vector3.zero, Quaternion.identity, UpdateGridLayout.transform);
+        //updateItem.transform.SetParent(UpdateGridLayout.transform);
          
         updateItem.InitializeItem(item.itemSptite, item.GetNextModificationText(), (item.GetItemCurrentLevel()+1).ToString() + " уровень");
         LevelUpItems.Add(updateItem.gameObject);
@@ -229,8 +231,8 @@ public class PlayerExpiriense : MonoBehaviour
 
     private void CreateNewitemUI(Item item)
     {
-        NewItem newItem = Instantiate(Resources.Load<NewItem>("LevelUp/NewItem"), Vector3.zero, Quaternion.identity);
-        newItem.transform.SetParent(UpdateGridLayout.transform);
+        NewItem newItem = Instantiate(Resources.Load<NewItem>("LevelUp/NewItem"), Vector3.zero, Quaternion.identity, UpdateGridLayout.transform);
+        //newItem.transform.SetParent(UpdateGridLayout.transform);
 
         newItem.InitializeItem(item.itemSptite, item.itemName, item.itemDescription);
         LevelUpItems.Add(newItem.gameObject);
