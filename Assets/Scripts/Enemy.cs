@@ -11,8 +11,9 @@ public class Enemy : Hp
 
     private Transform target;
 
-    private void Start()
+    protected override void Start()
     {
+        base.Start();
         _expShardPrefab = Resources.Load<GameObject>("XpShard");
         target = GameObject.FindWithTag("Player").transform;
         EnemyManager.instance.AddTransformToList(this.gameObject.transform);
@@ -37,6 +38,12 @@ public class Enemy : Hp
             LevelStats.instance.enemiesKilled += 1;
         }
         base.Death();     
+    }
+
+    public override void TakeDamage(float damage)
+    {
+        base.TakeDamage(damage);
+        ShowFloatingText(damage, Color.white);
     }
 
     private void DropRandomItemOrNthg()

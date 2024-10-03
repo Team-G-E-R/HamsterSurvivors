@@ -16,11 +16,6 @@ public class LevelStats : MonoBehaviour
         instance = this;
     }
 
-    private void Update()
-    {
-        Debug.Log(Time.timeSinceLevelLoad.ToString());
-    }
-
     public void GetLevelStats()
     {
         CreateLevelStatItem("Time :", GetLevelPlayTime());

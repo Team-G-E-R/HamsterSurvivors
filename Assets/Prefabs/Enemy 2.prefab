@@ -103,6 +103,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isPlayer: 0
   maxHealth: 20
+  floatingTextPrefab: {fileID: 1980401470151832937, guid: f7cce1d4c6d1d804fa1783c8f1ac5cb2,
+    type: 3}
   moveSpeed: 1
   isDestroyItem: 0
 --- !u!50 &3759819382515987833

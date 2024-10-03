@@ -282,6 +282,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isPlayer: 1
   maxHealth: 100
+  floatingTextPrefab: {fileID: 1980401470151832937, guid: f7cce1d4c6d1d804fa1783c8f1ac5cb2,
+    type: 3}
   _moveSpeedMulti: 1
   shootInterval: 2
   bulletPrefab: {fileID: 3601594058805797083, guid: a6b09c6b7c3a06f47a96af416b990cf7,

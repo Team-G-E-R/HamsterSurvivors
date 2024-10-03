@@ -29,8 +29,9 @@ public class PlayerController : Hp, PlayerStatsObserver
         instance = this;
     }
 
-    private void Start()
+    protected override void Start()
     {
+        base.Start();
         currentHealth = maxHealth;
         UpdateHealthUI();
         rb= GetComponent<Rigidbody2D>();
