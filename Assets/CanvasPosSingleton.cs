@@ -9,6 +9,5 @@ public class CanvasPosSingleton : MonoBehaviour
     private void Awake()
     {
         canvasTransform = GetComponent<RectTransform>();
-        Debug.Log("base transform " + $"{canvasTransform == null}");
     }
 }

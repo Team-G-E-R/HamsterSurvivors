@@ -1763,7 +1763,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 30.75
+  m_fontSize: 31.3
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -5876,7 +5876,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   upgradeManager: {fileID: 49544673}
-  upgradeItemPrefab: {fileID: 1536946553069458567, guid: 648f9fa7284e5e74b83c69b277d24e31,
+  upgradeItemPrefab: {fileID: 18847291134037210, guid: 1c1d0f91b5ec60640b0e026efb412cf3,
     type: 3}
   upgradeGrid: {fileID: 2132228540}
   upgradeNameText: {fileID: 736750524}

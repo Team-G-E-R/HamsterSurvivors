@@ -25,7 +25,6 @@ public class Hp : MonoBehaviour
     protected virtual void Start()
     {
         textCanvasTransform = FindAnyObjectByType<CanvasPosSingleton>().canvasTransform;
-        Debug.Log("finded transform " + $"{textCanvasTransform == null}");
     }
 
 
@@ -50,16 +49,15 @@ public class Hp : MonoBehaviour
         if (floatingTextPrefab != null)
         {
             GameObject floatingText = Instantiate(floatingTextPrefab, transform.position, Quaternion.identity, textCanvasTransform);
-            floatingText.transform.SetParent(textCanvasTransform, true);
+            //floatingText.transform.SetParent(textCanvasTransform, true);
             TMP_Text textMesh = floatingText.GetComponent<TMP_Text>();
 
             if (textMesh != null)
             {
-                textMesh.text = value.ToString();  // Присваиваем значение
-                textMesh.color = textColor;        // Устанавливаем цвет текста
+                textMesh.text = value.ToString();  
+                textMesh.color = textColor;        
             }
 
-            // Запускаем анимацию и уничтожаем объект после завершения
             Animator textAnimator = floatingText.GetComponent<Animator>();
             if (textAnimator != null)
             {
@@ -67,7 +65,7 @@ public class Hp : MonoBehaviour
             }
             else
             {
-                Destroy(floatingText, 2f);  // Уничтожить через 1 секунду, если нет анимации
+                Destroy(floatingText, 2f);  
             }
         }
     }
