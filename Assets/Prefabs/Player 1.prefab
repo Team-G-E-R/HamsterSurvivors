@@ -202,7 +202,7 @@ SpriteRenderer:
   m_SortingLayer: 1
   m_SortingOrder: 50
   m_Sprite: {fileID: 21300000, guid: 535a2318123598d4db8ae69c523dd7d0, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.42745098, g: 0.46666667, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -421,13 +421,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 499047250923178638, guid: f82dbe6431a974b4e8d944efe81af549,
         type: 3}
+      propertyPath: waves.Array.size
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 499047250923178638, guid: f82dbe6431a974b4e8d944efe81af549,
+        type: 3}
       propertyPath: waves.Array.data[0].countMax
-      value: 20
+      value: 300
       objectReference: {fileID: 0}
     - target: {fileID: 499047250923178638, guid: f82dbe6431a974b4e8d944efe81af549,
         type: 3}
       propertyPath: waves.Array.data[0].countMin
-      value: 20
+      value: 300
       objectReference: {fileID: 0}
     - target: {fileID: 499047250923178638, guid: f82dbe6431a974b4e8d944efe81af549,
         type: 3}
@@ -441,12 +446,32 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 499047250923178638, guid: f82dbe6431a974b4e8d944efe81af549,
         type: 3}
+      propertyPath: waves.Array.data[2].countMax
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 499047250923178638, guid: f82dbe6431a974b4e8d944efe81af549,
+        type: 3}
+      propertyPath: waves.Array.data[2].countMin
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 499047250923178638, guid: f82dbe6431a974b4e8d944efe81af549,
+        type: 3}
       propertyPath: waves.Array.data[3].countMax
       value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 499047250923178638, guid: f82dbe6431a974b4e8d944efe81af549,
         type: 3}
       propertyPath: waves.Array.data[3].countMin
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 499047250923178638, guid: f82dbe6431a974b4e8d944efe81af549,
+        type: 3}
+      propertyPath: waves.Array.data[4].countMax
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 499047250923178638, guid: f82dbe6431a974b4e8d944efe81af549,
+        type: 3}
+      propertyPath: waves.Array.data[4].countMin
       value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 499047250923178638, guid: f82dbe6431a974b4e8d944efe81af549,
@@ -476,6 +501,12 @@ PrefabInstance:
       propertyPath: waves.Array.data[3].enemyPrefab
       value: 
       objectReference: {fileID: 7244432685299430168, guid: 0c21468166c57e4469f7d942f9287495,
+        type: 3}
+    - target: {fileID: 499047250923178638, guid: f82dbe6431a974b4e8d944efe81af549,
+        type: 3}
+      propertyPath: waves.Array.data[4].enemyPrefab
+      value: 
+      objectReference: {fileID: 689142761185860980, guid: be04aae04925c144dae9b737a1116362,
         type: 3}
     - target: {fileID: 499047250923178639, guid: f82dbe6431a974b4e8d944efe81af549,
         type: 3}
