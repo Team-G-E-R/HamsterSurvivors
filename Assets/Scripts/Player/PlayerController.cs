@@ -35,6 +35,7 @@ public class PlayerController : Hp, PlayerStatsObserver
         currentHealth = maxHealth;
         UpdateHealthUI();
         rb= GetComponent<Rigidbody2D>();
+        Debug.Log(rb == null);
         animator = GetComponent<Animator>();
     }
 
